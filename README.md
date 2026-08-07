@@ -1,6 +1,6 @@
 # Private Infrastructure Platform
 
-Private Infrastructure Platform is a long-term homelab-to-micro-datacenter build that combines infrastructure engineering, cybersecurity, OT/ICS simulation, observability, private cloud design, and future AI/GPU workloads in a single documented environment.
+Private Infrastructure Platform is a long-term homelab-to-micro-datacenter build that combines infrastructure engineering, cybersecurity, OT/ICS simulation, observability, private cloud design, privacy-first physical security, and future AI/GPU workloads in a single documented environment.
 
 This repository is designed to serve three roles at the same time:
 
@@ -11,7 +11,7 @@ This repository is designed to serve three roles at the same time:
 ## Why This Project Exists
 
 - Build a private infrastructure platform that can evolve in controlled phases instead of as disconnected lab experiments.
-- Create a realistic environment for learning infrastructure, networking, IAM, virtualization, storage, monitoring, and OT/ICS security.
+- Create a realistic environment for learning infrastructure, networking, IAM, virtualization, storage, monitoring, OT/ICS security, and locally managed physical security.
 - Produce professional documentation that makes the system reproducible, supportable, and presentation-ready.
 - Establish a foundation for future business demonstrations, client conversations, and technical case studies.
 
@@ -25,7 +25,8 @@ This repository is designed to serve three roles at the same time:
 - TrueNAS storage server
 - Grafana and Prometheus monitoring
 - Wazuh SIEM
-- Future Kubernetes, Mac mini, OT/ICS, and AI/Unreal expansion layers
+- Privacy-first local physical-security domain with dedicated NVR/security services, PoE cameras, and a local-only doorbell camera
+- Future Kubernetes, Mac mini, OT/ICS, AI/Unreal, and building-automation expansion layers
 
 ## Repository Authority
 
@@ -48,6 +49,7 @@ This repository is designed to serve three roles at the same time:
 | Storage | [storage/truenas-setup.md](storage/truenas-setup.md) |
 | Monitoring | [monitoring/monitoring-setup.md](monitoring/monitoring-setup.md) |
 | Security and SIEM | [security/security-model.md](security/security-model.md) |
+| Physical security and building infrastructure | [security/physical-security-platform.md](security/physical-security-platform.md) |
 | Runbooks | [runbooks/maintenance-runbook.md](runbooks/maintenance-runbook.md) |
 | Disaster recovery | [runbooks/disaster-recovery-runbook.md](runbooks/disaster-recovery-runbook.md) |
 | Future roadmap | [planning/expansion-roadmap.md](planning/expansion-roadmap.md) |
@@ -60,6 +62,8 @@ This repository is designed to serve three roles at the same time:
 - Prefer repeatable builds over one-off fixes.
 - Treat observability and recovery as first-class features.
 - Keep public documentation sanitized, professional, and evidence-backed.
+- Prefer local-first services when privacy, resilience, or continuity matter.
+- No camera or doorbell device should require direct internet access for its core security function.
 
 ## Canonical Repository Structure
 
@@ -97,14 +101,15 @@ private-infrastructure-platform/
 | 4 | Kubernetes and automation | Container platform maturity |
 | 5 | OT/ICS security lab | Segmented simulation environment |
 | 6 | Mac mini integration | Additional platform services |
-| 7 | AI and Unreal workloads | GPU-backed expansion layer |
+| 7 | Physical security and building infrastructure | Local-only surveillance, NVR, doorbell, and security segmentation |
+| 8 | AI and Unreal workloads | GPU-backed expansion layer |
 
 ## What This Repository Must Eventually Let You Do
 
 - Rebuild the environment from scratch using only the repository and approved secrets.
 - Understand why each architectural choice was made.
 - Operate the environment safely during normal changes.
-- Recover from hardware, network, storage, or service failure.
+- Recover from hardware, network, storage, service, or physical-security-system failure.
 - Extend the platform without losing security boundaries or documentation quality.
 
 ## Evidence Placeholders
@@ -112,14 +117,16 @@ private-infrastructure-platform/
 - Diagram placeholder: `diagrams/architecture/platform-overview.drawio`
 - Diagram placeholder: `diagrams/networking/logical-topology.drawio`
 - Diagram placeholder: `diagrams/rack/rack-elevation-rack-a.drawio`
+- Diagram placeholder: `diagrams/security/physical-security-topology.drawio`
 - Screenshot placeholder: `screenshots/architecture/overall-platform-state.png`
-- Table placeholder: hardware inventory, IP plan, VLAN matrix, backup matrix
-- Config snippet placeholder: sanitized OPNsense interface assignments, Proxmox bridge config, Prometheus scrape config
+- Table placeholder: hardware inventory, IP plan, VLAN matrix, backup matrix, camera inventory, retention matrix
+- Config snippet placeholder: sanitized OPNsense interface assignments, Proxmox bridge config, Prometheus scrape config, NVR network policy
 
 ## Next Documentation Priorities
 
 1. Convert planned architecture into finalized diagrams as hardware lands.
 2. Record actual serials, firmware, addresses, and rack positions in the inventory docs.
 3. Capture sanitized configuration exports in `configs/`.
-4. Log every maintenance window, DR test, and lesson learned as the platform matures.
+4. Define the physical-security VLANs, NVR platform, camera standards, retention target, and UPS runtime requirements.
+5. Log every maintenance window, DR test, security-system test, and lesson learned as the platform matures.
 
